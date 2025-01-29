@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{ hooks.seo | safe }}
+        {{ hooks.head | safe }}
+        <link  rel="stylesheet" href={{"style.css" | assets}}>
+        {# <script src="http://127.0.0.1:5501/dist/gearbox/qumra-gearbox.js" defer></script> #}
+        {# <script type="module" src="http://127.0.0.1:5502/dist/esm/qumra-ui.js"></script> #}
+        {# <script src="http://127.0.0.1:5501/dist/gearbox/qumra-gearbox.js" defer></script> #}
+        {# <script src="//unpkg.com/alpinejs" defer></script> #}
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+        <style>
+            * {
+                font-family: "{{global.app.settings.font.title}}" !important;
+            }
+            :root {
+                --mainRadius: 4px;
+            }
+        </style>
+
+    </head>
+    <body style="background-color: white;overflow-x: hidden" dir="rtl" x-data="GlobalState()" x-init="init()">
+        {% include "common/static/loading/index.njk" ignore missing %}
+            {% include "common/header.njk" ignore missing %}
+            <div class=" min-h-screen">
+                {% block content %}{% endblock %}
+            </div>
+            {% include "common/footer.njk" ignore missing %}
+
+        <script src={{"app.js" | assets }} defer></script>
+        {{ hooks.body | safe }}
+    </body>
+
+</html>
